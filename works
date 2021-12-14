@@ -1,0 +1,83 @@
+package com.company;
+import java.util.ArrayList;
+public class Student {
+
+
+    private String imie;
+    private double ocena;
+    private ArrayList<Double>dziennik ;
+
+
+
+    public Student(String imie){
+        this.imie = imie;
+        dziennik = new ArrayList<Double>();
+
+    }
+    public  void  addOcena(Double ocena) {
+        if (ocena != null)
+            if(ocena>=1 && ocena<=6){
+                dziennik.add(ocena);
+            }
+
+    }
+    public void setName(String imie) {
+        this.imie = imie;
+    }
+    public ArrayList<Double> getOcena() {
+        return dziennik;
+    }
+    public double avg(ArrayList<Double> dziennik) {
+        if (dziennik == null || dziennik.isEmpty()) {
+            return 0;
+        }
+        double sum = 0;
+        for (Double ocena : dziennik) {
+            sum += ocena;
+        }
+
+        return sum / dziennik.size();
+    }
+    public String getName() {
+        return imie;
+    }
+
+
+    public String toString() {
+        return imie + dziennik;
+
+
+    }
+
+
+
+
+
+}
+
+
+
+
+
+package com.company;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Student student1 = new Student("Sikora");
+
+        student1.addOcena(3.0);
+        student1.addOcena(4.0);
+        student1.addOcena(5.0);
+
+
+        System.out.println(student1);
+
+        student1.avg(student1.getOcena());
+
+        System.out.println(student1.avg(student1.getOcena()));
+    }
+}
+
+
